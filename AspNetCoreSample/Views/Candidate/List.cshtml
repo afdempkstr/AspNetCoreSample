@@ -1,0 +1,20 @@
+﻿@model IEnumerable<AspNetCoreSample.Models.Candidate>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidates List</title>
+</head>
+<body>
+
+    @foreach (var candidate in Model)
+    {
+        <div>
+            <h1>@candidate.FirstName @candidate.LastName</h1>
+            <h2>@candidate.Description</h2>
+            <h2>@candidate.Specialisation.Name</h2>
+        </div>
+    }
+
+</body>
+</html>
