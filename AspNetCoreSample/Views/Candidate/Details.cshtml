@@ -1,0 +1,13 @@
+﻿@model Candidate
+
+    <div class="thumbnail">
+        <img alt="@Model.LastName" src="@Model.ImageThumbnailUrl">
+        <div class="caption-full">
+            <h3 class="pull-right">@Model.Rating</h3>
+            <h3>
+                <a href="#">@Model.LastName @Model.FirstName</a>
+            </h3>
+            <h4>@Model.Description</h4>
+            <p>@Model.IsAvailable</p>
+        </div>
+    </div>

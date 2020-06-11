@@ -30,5 +30,16 @@ namespace AspNetCoreSample.Controllers
 
             return View(vm);
         }
+
+        public IActionResult Details(int id)
+        {
+            var candidate = _candidateRepository.GetCandidateById(id);
+            if (candidate == null)
+            {
+                return NotFound();
+            }
+
+            return View(candidate);
+        }
     }
 }
