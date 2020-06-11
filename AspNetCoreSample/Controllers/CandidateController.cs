@@ -26,6 +26,7 @@ namespace AspNetCoreSample.Controllers
                 Candidates = candidates,
                 Header = "List of candidates"
             };
+            ViewBag.Title = "Candidate Manager";
 
             return View(vm);
         }

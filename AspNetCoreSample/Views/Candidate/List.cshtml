@@ -1,22 +1,16 @@
 ﻿@model AspNetCoreSample.ViewModels.CandidateListViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Candidates List</title>
-</head>
-<body>
+@{
+    Layout = "_Layout";
+}
 
-    <h1>@Model.Header</h1>
+<h1>@Model.Header</h1>
 
-    @foreach (var candidate in Model.Candidates)
-    {
-        <div>
-            <h1>@candidate.FirstName @candidate.LastName</h1>
-            <h2>@candidate.Description</h2>
-            <h2>@candidate.Specialisation.Name</h2>
-        </div>
-    }
-
-</body>
-</html>
+@foreach (var candidate in Model.Candidates)
+{
+    <div>
+        <h1>@candidate.FirstName @candidate.LastName</h1>
+        <h2>@candidate.Description</h2>
+        <h2>@candidate.Specialisation.Name</h2>
+    </div>
+}
