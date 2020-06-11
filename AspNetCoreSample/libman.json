@@ -4,7 +4,7 @@
   "libraries": [
     {
       "library": "twitter-bootstrap@3.3.7",
-      "destination": "wwwroot/lib/twitter-bootstrap/"
+      "destination": "wwwroot/lib/bootstrap/"
     },
     {
       "library": "jquery@3.5.1",
