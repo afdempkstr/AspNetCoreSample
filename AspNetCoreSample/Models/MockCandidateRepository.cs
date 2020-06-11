@@ -15,10 +15,10 @@ namespace AspNetCoreSample.Models
 
             _candidates = new List<Candidate>
             {
-                new Candidate() { Id = 1, LastName="Papadopoulos", FirstName="Nick", Rating=15.95M, Description="Lorem Ipsum", SpecializationId = 1, Specialisation = specs[0] },
-                new Candidate() { Id = 2, LastName="Katinas", FirstName="John", Rating=18.95M, Description="Lorem Ipsum", SpecializationId = 2, Specialisation = specs[1]},
-                new Candidate() { Id = 3, LastName="Floyd", FirstName="George", Rating=15.95M, Description="Lorem Ipsum", SpecializationId = 1, Specialisation = specs[0]},
-                new Candidate() { Id = 4, LastName="Lampridis", FirstName="Stergios", Rating=12.95M, Description="Lorem Ipsum", SpecializationId = 3, Specialisation = specs[2]}
+                new Candidate() { Id = 1, LastName="Papadopoulos", FirstName="Nick", Rating=15.95M, Description="Lorem Ipsum", SpecializationId = 1, Specialisation = specs[0], ImageThumbnailUrl="https://randomuser.me/api/portraits/lego/5.jpg" },
+                new Candidate() { Id = 2, LastName="Katinas", FirstName="John", Rating=18.95M, Description="Lorem Ipsum", SpecializationId = 2, Specialisation = specs[1], ImageThumbnailUrl="https://randomuser.me/api/portraits/lego/2.jpg"},
+                new Candidate() { Id = 3, LastName="Floyd", FirstName="George", Rating=15.95M, Description="Lorem Ipsum", SpecializationId = 1, Specialisation = specs[0], ImageThumbnailUrl="https://randomuser.me/api/portraits/lego/3.jpg"},
+                new Candidate() { Id = 4, LastName="Lampridis", FirstName="Stergios", Rating=12.95M, Description="Lorem Ipsum", SpecializationId = 3, Specialisation = specs[2], ImageThumbnailUrl="https://randomuser.me/api/portraits/lego/8.jpg"}
             };
         }
 
