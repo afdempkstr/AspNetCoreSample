@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspNetCoreSample.Models.Candidate>
+﻿@model AspNetCoreSample.ViewModels.CandidateListViewModel
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,9 @@
 </head>
 <body>
 
-    @foreach (var candidate in Model)
+    <h1>@Model.Header</h1>
+
+    @foreach (var candidate in Model.Candidates)
     {
         <div>
             <h1>@candidate.FirstName @candidate.LastName</h1>
