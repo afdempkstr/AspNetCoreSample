@@ -31,8 +31,8 @@ namespace AspNetCoreSample
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<ICandidateRepository, MockCandidateRepository>();
-            services.AddScoped<ISpecialisationRepository, MockSpecialisationRepository>();
+            services.AddScoped<ICandidateRepository, CandidateRepository>();
+            services.AddScoped<ISpecialisationRepository, SpecialisationRepository>();
 
             services.AddControllersWithViews();
 
