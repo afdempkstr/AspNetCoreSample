@@ -7,5 +7,7 @@ namespace AspNetCoreSample.Models
         IEnumerable<Candidate> AllCandidates { get; }
 
         Candidate GetCandidateById(int candidateId);
+
+        IEnumerable<Candidate> PopularCandidates();
     }
 }

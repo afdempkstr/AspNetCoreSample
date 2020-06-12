@@ -28,5 +28,10 @@ namespace AspNetCoreSample.Models
         {
             return _candidates.FirstOrDefault(c => c.Id == candidateId);
         }
+
+        public IEnumerable<Candidate> PopularCandidates()
+        {
+            return _candidates.Where(c => c.IsPopularCandidate);
+        }
     }
 }
