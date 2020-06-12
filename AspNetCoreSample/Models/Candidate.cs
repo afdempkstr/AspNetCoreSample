@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AspNetCoreSample.Models
+﻿namespace AspNetCoreSample.Models
 {
     public class Candidate
     {
@@ -28,5 +23,7 @@ namespace AspNetCoreSample.Models
         public int SpecialisationId { get; set; }
 
         public Specialisation Specialisation { get; set; }
+
+        public string SpecialCase { get; set; }
     }
 }
