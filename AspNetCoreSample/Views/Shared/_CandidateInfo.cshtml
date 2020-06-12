@@ -1,0 +1,15 @@
+﻿@model Candidate
+
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <img src="@Model.ImageThumbnailUrl" alt="No Photo">
+            <div class="caption">
+                <h3 class="pull-right">@Model.Rating.ToString("c")</h3>
+                <h3>
+                    <a asp-controller="Candidate" asp-action="Details" asp-route-id="@Model.Id">@Model.LastName @Model.FirstName</a>
+                </h3>
+                <p>@Model.Description</p>
+                <p>@Model.SpecialCase</p>
+            </div>
+        </div>
+    </div>

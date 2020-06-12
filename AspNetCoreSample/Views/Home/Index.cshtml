@@ -1,8 +1,8 @@
-﻿@model CandidateListViewModel
+﻿@model HomePageViewModel
 
 <h1>@Model.Header</h1>
 
-@foreach (var candidate in Model.Candidates)
+@foreach (var candidate in Model.PopularCandidates)
 {
     <partial name="_CandidateInfo" model="candidate" />
 }
