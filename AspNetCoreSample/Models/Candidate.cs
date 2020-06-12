@@ -25,7 +25,7 @@ namespace AspNetCoreSample.Models
 
         public bool IsAvailable { get; set; }
 
-        public int SpecializationId { get; set; }
+        public int SpecialisationId { get; set; }
 
         public Specialisation Specialisation { get; set; }
     }
