@@ -27,6 +27,7 @@
                     <ul class="nav navbar-nav">
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-controller="Candidate" asp-action="List">Candidates</a></li>
+                        @await Component.InvokeAsync("SelectedTeamProfile")
                     </ul>
                 </div>
             </div>
