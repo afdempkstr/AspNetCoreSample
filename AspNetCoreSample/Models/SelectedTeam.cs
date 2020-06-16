@@ -1,11 +1,10 @@
-﻿using AspNetCoreSample.Migrations;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetCoreSample.Models
 {
@@ -13,13 +12,25 @@ namespace AspNetCoreSample.Models
     {
         private readonly AppDbContext _appDbContext;
 
-        public string SelectedTeamId { get; set; }
+        public string SelectedTeamId { get; }
 
         public List<SelectedTeamCandidate> SelectedTeamCandidates { get; set; }
 
-        public SelectedTeam(AppDbContext appDbContext)
+        private SelectedTeam(AppDbContext appDbContext, string selectedTeamId)
         {
             _appDbContext = appDbContext;
+            SelectedTeamId = selectedTeamId;
+        }
+
+        public static SelectedTeam GetTeam(IServiceProvider services)
+        {
+            var dbContext = services.GetService<AppDbContext>();
+
+            ISession session = services.GetRequiredService<IHttpContextAccessor>().HttpContext.Session;
+            var teamId = session.GetString("TeamId") ?? Guid.NewGuid().ToString("N");
+            session.SetString("TeamId", teamId);
+
+            return new SelectedTeam(dbContext, teamId);
         }
 
         public void AddToTeam(Candidate candidate, int offerPrice)
@@ -67,20 +78,31 @@ namespace AspNetCoreSample.Models
 
         public List<SelectedTeamCandidate> GetSelectedTeamCandidates()
         {
-            return SelectedTeamCandidates ?? _appDbContext.SelectedTeamCandidates
+            SelectedTeamCandidates ??= _appDbContext.SelectedTeamCandidates
                 .Where(stc => stc.SelectedTeamId == SelectedTeamId)
                 .Include(stc => stc.Candidate)
                 .ToList();
+
+            return SelectedTeamCandidates;
         }
 
         public decimal GetSelectedTeamTotalOffer()
         {
-            return 0m;
+            var totalOffer = _appDbContext.SelectedTeamCandidates
+                .Where(c => c.SelectedTeamId == SelectedTeamId)
+                .Sum(c => c.OfferPrice);
+
+            return totalOffer;
         }
 
         public decimal GetSelectedTeamTotalRating()
         {
-            return 0m;
+            var totalRating = _appDbContext.SelectedTeamCandidates
+                .Where(c => c.SelectedTeamId == SelectedTeamId)
+                .Include(s => s.Candidate)
+                .Sum(t => t.Candidate.Rating);
+
+            return totalRating;
         }
     }
 }
