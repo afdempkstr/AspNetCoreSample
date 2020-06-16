@@ -10,4 +10,14 @@
             <h4>@Model.Description</h4>
             <p>@Model.IsAvailable</p>
         </div>
+
+        <div class="addToSelectedTeam">
+            <p class="button">
+                <a class="btn btn-primary"
+                   asp-controller="SelectedTeam"
+                   asp-action="AddToSelectedTeam"
+                   asp-route-candidateId="@Model.Id" asp-route-offerPrice="10">Add to selected team</a>
+            </p>
+        </div>
+
     </div>

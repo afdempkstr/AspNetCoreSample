@@ -1,0 +1,37 @@
+﻿@model SelectedTeamViewModel
+
+<h2>Your selected team</h2>
+<h4>These are the candidates that your company have selected.</h4>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Offer Price</th>
+            <th>Candidate</th>
+            <th class="text-right">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidate in Model.SelectedTeam.SelectedTeamCandidates)
+        {
+            <tr>
+                <td class="text-center">@candidate.OfferPrice</td>
+                <td class="text-left">@candidate.Candidate.LastName @candidate.Candidate.FirstName</td>
+                <td class="text-right">@candidate.Candidate.Rating</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" class="text-right">Total Rating:</td>
+            <td class="text-right">
+                @Model.SelectedTeamTotalRating.ToString("c")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">Total Offer Price:</td>
+            <td class="text-right">
+                @Model.SelectedTeamTotalOffer.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>

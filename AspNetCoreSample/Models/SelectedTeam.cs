@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace AspNetCoreSample.Models
 {
@@ -14,7 +15,8 @@ namespace AspNetCoreSample.Models
 
         public string SelectedTeamId { get; }
 
-        public List<SelectedTeamCandidate> SelectedTeamCandidates { get; set; }
+        private List<SelectedTeamCandidate> _selectedTeamCandidates;
+        public List<SelectedTeamCandidate> SelectedTeamCandidates => GetSelectedTeamCandidates();
 
         private SelectedTeam(AppDbContext appDbContext, string selectedTeamId)
         {
@@ -78,12 +80,12 @@ namespace AspNetCoreSample.Models
 
         public List<SelectedTeamCandidate> GetSelectedTeamCandidates()
         {
-            SelectedTeamCandidates ??= _appDbContext.SelectedTeamCandidates
+            _selectedTeamCandidates ??= _appDbContext.SelectedTeamCandidates
                 .Where(stc => stc.SelectedTeamId == SelectedTeamId)
                 .Include(stc => stc.Candidate)
                 .ToList();
 
-            return SelectedTeamCandidates;
+            return _selectedTeamCandidates;
         }
 
         public decimal GetSelectedTeamTotalOffer()
