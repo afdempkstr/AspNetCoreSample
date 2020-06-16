@@ -11,6 +11,8 @@ namespace AspNetCoreSample.Models
 
         public DbSet<Specialisation> Specialisations { get; set; }
 
+        public DbSet<SelectedTeamCandidate> SelectedTeamCandidates { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
