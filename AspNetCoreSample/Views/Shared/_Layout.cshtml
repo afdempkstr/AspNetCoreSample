@@ -29,6 +29,7 @@
                         @await Component.InvokeAsync("SpecialisationList")
                         <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
                         @await Component.InvokeAsync("SelectedTeamProfile")
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
             </div>
