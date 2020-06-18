@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,8 @@ namespace AspNetCoreSample
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<ISpecialisationRepository, SpecialisationRepository>();
             services.AddScoped<IOfferRepository, OfferRepository>();
@@ -40,6 +43,7 @@ namespace AspNetCoreSample
             services.AddSession();
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +58,8 @@ namespace AspNetCoreSample
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -61,6 +67,8 @@ namespace AspNetCoreSample
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
+
+                endpoints.MapRazorPages();
             });
         }
     }
