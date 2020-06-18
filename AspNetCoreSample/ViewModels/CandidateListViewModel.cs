@@ -7,6 +7,6 @@ namespace AspNetCoreSample.ViewModels
     {
         public IEnumerable<Candidate> Candidates { get; set; }
 
-        public string Header { get; set; }
+        public string CurrentSpecialisation { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AspNetCoreSample.Models
 {
-    interface ISpecialisationRepository
+    public interface ISpecialisationRepository
     {
         IEnumerable<Specialisation> AllSpecialisations { get; }
 
