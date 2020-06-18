@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace AspNetCoreSample.Models
+{
+    public class OfferRepository : IOfferRepository
+    {
+        public void CreateOffer(Offer offer)
+        {
+
+        }
+    }
+}

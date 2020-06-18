@@ -33,6 +33,7 @@ namespace AspNetCoreSample
 
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<ISpecialisationRepository, SpecialisationRepository>();
+            services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<SelectedTeam>(sp => SelectedTeam.GetTeam(sp));
 
             services.AddHttpContextAccessor();

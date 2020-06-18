@@ -13,6 +13,10 @@ namespace AspNetCoreSample.Models
 
         public DbSet<SelectedTeamCandidate> SelectedTeamCandidates { get; set; }
 
+        public DbSet<Offer> Offers { get; set; }
+
+        public DbSet<OfferDetail> OfferDetails { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
