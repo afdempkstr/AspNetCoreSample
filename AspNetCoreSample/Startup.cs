@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreSample.Middlewares;
 using AspNetCoreSample.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Connections;
@@ -64,6 +65,7 @@ namespace AspNetCoreSample
             app.UseStaticFiles();
             app.UseSession();
             app.UseCookiePolicy();
+            app.UseRequestCulture();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
