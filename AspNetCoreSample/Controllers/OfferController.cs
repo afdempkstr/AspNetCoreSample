@@ -1,11 +1,10 @@
 ﻿using AspNetCoreSample.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AspNetCoreSample.Controllers
 {
+    [Authorize]
     public class OfferController : Controller
     {
         private readonly IOfferRepository _offerRepository;
