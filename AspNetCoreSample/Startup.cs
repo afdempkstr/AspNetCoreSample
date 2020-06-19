@@ -49,7 +49,9 @@ namespace AspNetCoreSample
             services.AddHttpContextAccessor();
             services.AddSession();
 
-            services.AddControllersWithViews();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddControllersWithViews().AddViewLocalization();
             services.AddRazorPages();
         }
 
@@ -62,6 +64,15 @@ namespace AspNetCoreSample
             }
 
             app.UseHttpsRedirection();
+
+            var supportedCultures = new[] { "en-US", "el-GR" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
+
             app.UseStaticFiles();
             app.UseSession();
             app.UseCookiePolicy();

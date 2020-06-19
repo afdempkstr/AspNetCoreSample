@@ -1,4 +1,5 @@
 ﻿@model CandidateListViewModel
+@inject IViewLocalizer Localizer
 
 <h1>@Model.CurrentSpecialisation</h1>
 
@@ -6,3 +7,5 @@
 {
     <partial name="_CandidateInfo" model="candidate" />
 }
+
+<h3>@Localizer["Good Morning"]</h3>
