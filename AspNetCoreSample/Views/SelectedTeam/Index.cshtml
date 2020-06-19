@@ -16,7 +16,16 @@
             <tr>
                 <td class="text-center">@candidate.OfferPrice</td>
                 <td class="text-left">@candidate.Candidate.LastName @candidate.Candidate.FirstName</td>
-                <td class="text-right">@candidate.Candidate.Rating</td>
+                <td class="text-right">@candidate.Candidate.Rating
+                    <feature name="RemoveCandidateFromSelectedTeam">
+                        <div class="removeFromSelectedTeam">
+                                <a class="btn btn-primary"
+                                   asp-controller="SelectedTeam"
+                                   asp-action="RemoveFromSelectedTeam"
+                                   asp-route-candidateId="@candidate.Candidate.Id">Remove</a>
+                        </div>
+                    </feature>
+                </td>
             </tr>
         }
     </tbody>

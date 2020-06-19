@@ -1,6 +1,7 @@
 ﻿using AspNetCoreSample.Models;
 using AspNetCoreSample.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.FeatureManagement.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,7 @@ namespace AspNetCoreSample.Controllers
             return RedirectToAction("Index");
         }
 
+        [FeatureGate("RemoveCandidateFromSelectedTeam")]
         public IActionResult RemoveFromSelectedTeam(int candidateId)
         {
             var candidate = _candidateRepository.AllCandidates.FirstOrDefault(c => c.Id == candidateId);

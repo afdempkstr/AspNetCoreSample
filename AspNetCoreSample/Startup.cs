@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.FeatureManagement;
 
 namespace AspNetCoreSample
 {
@@ -40,6 +41,8 @@ namespace AspNetCoreSample
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddFeatureManagement();
 
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<ISpecialisationRepository, SpecialisationRepository>();
