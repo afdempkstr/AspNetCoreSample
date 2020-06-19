@@ -1,11 +1,13 @@
 ﻿using AspNetCoreSample.Models;
 using AspNetCoreSample.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AspNetCoreSample.Controllers
 {
+    [Authorize]
     public class CandidateController : Controller
     {
         private readonly ICandidateRepository _candidateRepository;

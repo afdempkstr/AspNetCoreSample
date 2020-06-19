@@ -34,6 +34,12 @@ namespace AspNetCoreSample
 
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<ISpecialisationRepository, SpecialisationRepository>();
             services.AddScoped<IOfferRepository, OfferRepository>();
@@ -57,6 +63,7 @@ namespace AspNetCoreSample
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseCookiePolicy();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
